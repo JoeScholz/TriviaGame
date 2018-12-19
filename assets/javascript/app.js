@@ -6,7 +6,7 @@ var scoreOverScreen;
 var timeOutScreen;
 
 var timer;
-var timeCount = :60;
+var timeCount = 0:00;
 
 var correctAns = 0;
 var wrongAns = 0;
@@ -14,12 +14,16 @@ var missed = 0;
 
 var timeInterval;
 
-function startTimer (
+function startTimer(){
   timeInterval = setInterval(resetTimer, 1000);
-)
+}
 
-  function start() {
-    $("#countDown").html("5:00");
+function stopTimer(){
+  clearInterval(timeInterval)
+}
+
+  function startReset() {
+    $("#countDown").html("1:30");
   }
   
 start();
