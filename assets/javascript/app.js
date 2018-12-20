@@ -6,7 +6,7 @@ var scoreOverScreen;
 var timeOutScreen;
 
 var timer;
-var timeCount = 0:00;
+var timeCount = 1:30;
 
 var correctAns = 0;
 var wrongAns = 0;
@@ -28,7 +28,7 @@ function stopTimer(){
   
 start();
   var questions = [
-  {  
+  { 
   question: "1. Question1?",
   answers: [
     "answer1a",
