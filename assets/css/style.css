@@ -1,0 +1,49 @@
+html, body{
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-image: url("/assets/images/Xmas.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(139, 220, 247);
+  }
+  
+h2{
+    text-align: left;
+}
+
+.container--answers{
+    color: rgb(66, 66, 66);
+}
+
+.results{
+    font-size: 2em;
+    color: rgb(66, 66, 66);
+    text-align: center;
+}
+
+.container--content{
+    height: fit-content;
+    background-color: rgb(23, 161, 115);
+    padding-bottom: 1em;
+
+}
+
+h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 5.5em;
+    text-align: right;
+    color: rgb(184, 40, 40);
+}
+
+#startButton{
+    float: right;
+    height: 2em;
+    font-size: 2em;
+    background: rgb(184, 40, 40);
+    color: rgb(23, 161, 115);
+}

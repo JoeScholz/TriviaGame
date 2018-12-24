@@ -1,35 +1,86 @@
 var questions = [
     { 
-    question: "1. Question1?",
+    question: "1. In the song “Frosty the Snowman,” what made Frosty come to life?",
     answers: [
-        "answer1a",
-        "answer2a",
-        "answer3a",
-        "answer4a",
+        "An old silk hat",
+        "A fairy spell",
+        "A shooting star",
+        "The laughter of children",
     ],
-    correctAnswer: "answer1a"
+    correctAnswer: "An old silk hat",
+    },
+    
+    { 
+    question: "2. Miracle on 34th Street” centers on what real-life department store?",
+    answers: [
+        "Nordstrom's",
+        "Macy's",
+        "Dillard's",
+        "JC Penney",
+    ],
+    correctAnswer: "Macy's",
     },
     { 
-    question: "2. Question2?",
+    question: "3. What traditional Christmas decoration is actually a parasitic plant?",
     answers: [
-        "answer1b",
-        "answer2b",
-        "answer3b",
-        "answer4b",
+        "Poinsettia",
+        "Douglas Fir",
+        "Mistletoe",
+        "Holly",
     ],
-    correctAnswer: "answer2b"
+    correctAnswer: "Mistletoe",
     },
     { 
-    question: "3. Question3?",
+    question: "4. “Twas the Night Before Christmas” was originally published under what name?",
     answers: [
-        "answer1c",
-        "answer2c",
-        "answer3c",
-        "answer4c",
+        "A Visit from St. Nicholas",
+        "Twas the Dawn Before Christmas",
+        "An elf on the roof",
+        "Our Christmas story",
     ],
-    correctAnswer: "answer3c"
+    correctAnswer: "Mistletoe",
+    },
+    { 
+    question: "5. What figure from English folklore came to be associated with Santa Claus?",
+    answers: [
+        "Jack in the Green",
+        "Father Christmas",
+        "Robin Goodfello",
+        "Tom Thumb",
+    ],
+    correctAnswer: "Father Christmas",
+    },
+    { 
+    question: "6. According to the folklore of Austria and other countries, what horned figure punishes naughty children at Christmastime?",
+    answers: [
+        "The Devil",
+        "St. Nicholas",
+        "Pan",
+        "Krampus",
+    ],
+    correctAnswer: "Krampus",
+    },
+    { 
+    question: "7. In what modern-day country was Saint Nicholas born?",
+    answers: [
+        "Turkey",
+        "Austria",
+        "Isreal",
+        "Sweeden",
+    ],
+    correctAnswer: "Turkey",
+    },
+    { 
+    question: "8. What holiday movie sequel includes a cameo by Donald Trump?",
+    answers: [
+        "Die Hard 2",
+        "Christmas Vacation 2",
+        "Home Alone 2",
+        "Jingle All the Way 2",
+    ],
+    correctAnswer: "Home Alone 2",
     }
-  ];
+];
 
 var questionResult = [];
 var correct = 0;
@@ -65,38 +116,15 @@ function getScore() {
 
     });
     $('.results').html('Correct: ' + correct + '<br />' + 'Incorrect: ' + incorrect + '<br />' + 'Unanswered: ' + unanswered);
-}
-  
-function startTimer() {
-    makeQuestions(questions);
-
     correct = 0;
     incorrect = 0;
     unanswered = 0;
+}
+  
+function startTimer() {
+    var counter = 90;
 
-    $('.results').html('');
-
-    $('#startButton').css('visibility','hidden');
-    $('#startButton').val('Restart!');
-
-    $(".question input[type='radio']").click(function(){
-        var radioValue = $(this).val();
-    
-        var questionId = $(this).closest(".question").attr('id');
-        console.log('Question Id: ' + questionId);
-        var questionKey = questionId.replace('question', '');
-        console.log('Question Key: ' + questionKey);
-        if(questions[questionKey].correctAnswer.includes(radioValue) == true) {
-            questionResult[questionKey] = 'correct';
-        } else {
-            questionResult[questionKey] = 'incorrect';
-        }
-        console.log(questionResult);
-    });
-
-    var counter = 5;
-
-    setInterval(function() {
+    var interval = setInterval(function() {
     counter--;
     if (counter >= 0) {
       span = document.getElementById("countDown");
@@ -111,6 +139,33 @@ function startTimer() {
     }
 
   }, 1000);
+
+    makeQuestions(questions);
+    $('.results').html('');
+    $('#startButton').css('visibility','hidden');
+    $('#startButton').val('Restart!');
+
+    $(".question input[type='radio']").click(function(){
+    var radioValue = $(this).val();
+
+    var questionId = $(this).closest(".question").attr('id');
+    console.log('Question Id: ' + questionId);
+    var questionKey = questionId.replace('question', '');
+    console.log('Question Key: ' + questionKey);
+    if(questions[questionKey].correctAnswer.includes(radioValue) == true) {
+        questionResult[questionKey] = 'correct';
+    } else {
+        questionResult[questionKey] = 'incorrect';
+    }
+    console.log(questionResult);
+    if(questionResult.indexOf("undefined") < 0) {
+        clearInterval(interval);
+        getScore();
+        $(".container--answers").html('');
+        $('#startButton').css('visibility','visible');
+    }
+    });
+  
 }
 
 $('#startButton').click(function() {
