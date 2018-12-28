@@ -130,7 +130,7 @@ function startTimer() {
       span = document.getElementById("countDown");
       span.innerHTML = counter;
     }
-    // Display 'counter' wherever you want to display it.
+    
     if (counter === 0) {
         clearInterval(counter);
         getScore();
