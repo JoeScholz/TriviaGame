@@ -113,8 +113,9 @@ function getScore() {
         } else {
             unanswered++;
         }
-
+        
     });
+
     $('.results').html('Correct: ' + correct + '<br />' + 'Incorrect: ' + incorrect + '<br />' + 'Unanswered: ' + unanswered);
     correct = 0;
     incorrect = 0;
